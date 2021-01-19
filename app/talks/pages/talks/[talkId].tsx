@@ -3,11 +3,11 @@ import Layout from "app/layouts/Layout"
 import { Link, useRouter, useQuery, useParam, BlitzPage, useMutation } from "blitz"
 import getTalk from "app/talks/queries/getTalk"
 import deleteTalk from "app/talks/mutations/deleteTalk"
-import QuestionList from "app/questions/QuestionList"
+import QuestionList from "app/questions/components/QuestionList"
 
 export const Talk = () => {
   const router = useRouter()
-  const talkId = useParam("talkId", "number")
+  const talkId = useParam("talkId", "number")!
   const [talk] = useQuery(getTalk, { where: { id: talkId } })
   const [deleteTalkMutation] = useMutation(deleteTalk)
 

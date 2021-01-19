@@ -36,3 +36,19 @@ model Session {
   publicData         String?
   privateData        String?
 }
+
+model Talk {
+  id        Int      @default(autoincrement()) @id
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String   
+}
+
+model Question {
+  id        Int      @default(autoincrement()) @id
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  text      String   
+  talk      Talk     @relation(fields: [talkId], references: [id])
+  talkId    Int      
+}
